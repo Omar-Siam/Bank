@@ -1,7 +1,11 @@
 package main
 
-import "fmt"
+import (
+	"Bank/src"
+	"fmt"
+)
 
 func main() {
-	fmt.Println("Simple Bank Application")
+	newAccount := src.NewTestingAccount(src.CreateNewAccount("ABC", 900), 5)
+	fmt.Println(newAccount)
 }
