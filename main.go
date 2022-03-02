@@ -6,6 +6,7 @@ import (
 )
 
 func main() {
-	newAccount := src.NewTestingAccount(src.CreateNewAccount("ABC", 900), 5)
-	fmt.Println(newAccount)
+	// Need to add tests when the SavingsAccount file is complete.
+	newSavingAccount := src.CreateSavingAccount(src.BasicAccountDetails{AccountID: "omar", Balance: 2000}, 50)
+	fmt.Println(newSavingAccount)
 }
