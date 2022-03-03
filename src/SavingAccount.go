@@ -18,7 +18,7 @@ func CreateSavingAccount(a BasicAccountDetails, Interest float64) SavingAccount 
 	return newSavingAccount
 }
 
-// Withdraw implements the Account interface. Allows customers to withdraw money with a fee.
+// Withdraw Implements the Account interface. Allows customers to withdraw money with a fee.
 func (s SavingAccount) Withdraw(Amount float64) bool {
 	if (s.BasicAccountDetails.Balance - (Amount - 3)) <= 10 {
 		return false
@@ -26,13 +26,15 @@ func (s SavingAccount) Withdraw(Amount float64) bool {
 	return true
 }
 
-// Deposit allows customers to add money to their balance with no fee.
+// Deposit Allows customers to add money to their balance with no fee.
 func (s SavingAccount) Deposit(Amount float64) {
 	s.BasicAccountDetails.Balance += Amount
 }
 
-func (s SavingAccount) addInterest(ratePeriod int64) float64 {
-	// compute the interest, add the interest to balance, return the paid interest.
-	// the ratePeriod is how often the interest will be added.
-	return 10.5
+// addInterest Adds the interest to the current balance and returns the interest amount.
+func (s SavingAccount) addInterest() float64 {
+	rate := s.InterestRate
+	interestAmount := (s.BasicAccountDetails.Balance) * rate
+	s.BasicAccountDetails.Balance += interestAmount
+	return interestAmount
 }
